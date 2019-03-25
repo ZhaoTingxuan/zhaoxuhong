@@ -111,6 +111,7 @@ h 不显示第一行
 ![](https://github.com/ZhaoTingxuan/zhaoxuhong/blob/master/15282028_lab2/img/13.png)
 
 流程图：
+![](https://github.com/ZhaoTingxuan/zhaoxuhong/blob/master/15282028_lab2/img/20.png)
 
 4、修改上述进程树中的进程，使得所有进程都循环输出自己的ID和父进程的ID。然后终止p2进程，观察发现，终止p2进程后，p4，p5进程fork失败。
 ![](https://github.com/ZhaoTingxuan/zhaoxuhong/blob/master/15282028_lab2/img/14.png)
