@@ -67,7 +67,7 @@ int main(int argc, char *argv[])
             char buf[BUF_SIZE] ;
             memset(buf, '\0', sizeof(buf));
             
-            printf("\nInput snd mesg: ");
+            printf("\nInput send message: ");
             scanf("%s", buf);
             
             strncpy(sndBuf.mtext, buf, strlen(buf)+1);
