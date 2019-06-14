@@ -133,12 +133,12 @@ write block(int i, char *p);
 为了能够对我们的模拟系统进行测试，请编写一个操纵文件系统的外壳程序或者一个菜单驱动系统。
 打开主程序，首先进入菜单页面；输入dir命令，查看现有文件。
 ###
-[]!https://github.com/ZhaoTingxuan/zhaoxuhong/blob/master/lab5/1.png
+[]!(https://github.com/ZhaoTingxuan/zhaoxuhong/blob/master/lab5/1.png)
 创建1.txt，打开并执行写入操作。
-[]!https://github.com/ZhaoTingxuan/zhaoxuhong/blob/master/lab5/2.png
+[]!(https://github.com/ZhaoTingxuan/zhaoxuhong/blob/master/lab5/2.png)
 关闭文件后，查看文件目录。
-[]!https://github.com/ZhaoTingxuan/zhaoxuhong/blob/master/lab5/3.png
+[]!(https://github.com/ZhaoTingxuan/zhaoxuhong/blob/master/lab5/3.png)
 测试删除功能。
-[]!https://github.com/ZhaoTingxuan/zhaoxuhong/blob/master/lab5/4.png
+[]!(https://github.com/ZhaoTingxuan/zhaoxuhong/blob/master/lab5/4.png)
 再次查看文件目录，确定删除成功。
-[]!https://github.com/ZhaoTingxuan/zhaoxuhong/blob/master/lab5/5.png
+[]!(https://github.com/ZhaoTingxuan/zhaoxuhong/blob/master/lab5/5.png)
