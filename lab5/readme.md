@@ -9,6 +9,7 @@
 2 I/O系统
 -
 实际物理磁盘的结构是多维的：有柱面、磁头、扇区等概念。I/O系统的任务是隐藏磁盘的结构细节，把磁盘以逻辑块的面目呈现给文件系统。逻辑块顺序编号，编号取值范围为0至L−1，其中L表示磁盘的存储块总数。实验中，我们可以利用数组ldisk[C][H][B]构建磁盘模型，其中CHB 分别表示柱面号，磁头号和扇区号。
+
 每个扇区大小为512字节。I/O系统从文件系统接收命令，根据命令指定的逻辑块号把磁盘块的内容读入命令指定的内存区域，或者把命令指定的内存区域内容写入磁盘块。文件系统和I/O系统之间的接口由如下两个函数定义：
 
 read_block(int i, char *p);
@@ -17,7 +18,8 @@ read_block(int i, char *p);
 
 write block(int i, char *p);
 
-该函数把指针p指向的内容写入逻辑块i，拷贝的字符个数为存储块的长度B。此外，为了方便测试，我们还需要实现另外两个函数：一个用来把数组ldisk 存储到文件；另一个用来把文件内容恢复到数组。
+该函数把指针p指向的内容写入逻辑块i，拷贝的字符个数为存储块的长度B。此外，为了方便测试，我们还需要实现另外两个函数：一个用来把数组ldisk 存储到文件；
+另一个用来把文件内容恢复到数组。
 
 3 文件系统
 --
@@ -26,13 +28,21 @@ write block(int i, char *p);
 3.1 用户与文件系统之间的接口
 --
 文件系统需提供如下函数；create, destroy, open, read, write。
+
 • create(filename): 根据指定的文件名创建新文件。
+
 • destroy(filename): 删除指定文件。
+
 • open(filename): 打开文件。该函数返回的索引号可用于后续的read, write, lseek,或close操作。
+
 • close(index): 关闭制定文件。
+
 • read(index, mem_area, count): 从指定文件顺序读入count个字节memarea指定的内存位置。读操作从文件的读写指针指示的位置开始。
+
 • write(index, mem_area, count): 把memarea指定的内存位置开始的count个字节顺序写入指定文件。写操作从文件的读写指针指示的位置开始。
+
 • lseek(index, pos): 把文件的读写指针移动到pos指定的位置。pos是一个整数，表示从文件开始位置的偏移量。文件打开时，读写指针自动设置为0。每次读写操作之后，它指向最后被访问的字节的下一个位置。lseek能够在不进行读写操作的情况下改变读写指针能位置。
+
 • directory: 列表显示所有文件及其长度。
 
 3.2 文件系统的组织
@@ -46,7 +56,9 @@ write block(int i, char *p);
 -
 #####
 我们的文件系统中仅设置一个目录，该目录包含文件系统中的所有文件。除了不需要显示地创建和删除之外，目录在很多方面和普通文件相像。目录对应0号文件描述符。初始状态下，目录中没有文件，所有，目录对应的描述符中记录的长度应为0，而且也没有分配磁盘块。每创建一个文件，目录文件的长度便增加一分。目录文件的内容由一系列的目录项组成，其中每个目录项由如下内容组成：
+
 • 文件名
+
 • 文件描述符序号
 
 3.4 文件的创建与删除
@@ -121,4 +133,12 @@ write block(int i, char *p);
 为了能够对我们的模拟系统进行测试，请编写一个操纵文件系统的外壳程序或者一个菜单驱动系统。
 打开主程序，首先进入菜单页面；输入dir命令，查看现有文件。
 ###
-[]!
+[]!https://github.com/ZhaoTingxuan/zhaoxuhong/blob/master/lab5/1.png
+创建1.txt，打开并执行写入操作。
+[]!https://github.com/ZhaoTingxuan/zhaoxuhong/blob/master/lab5/2.png
+关闭文件后，查看文件目录。
+[]!https://github.com/ZhaoTingxuan/zhaoxuhong/blob/master/lab5/3.png
+测试删除功能。
+[]!https://github.com/ZhaoTingxuan/zhaoxuhong/blob/master/lab5/4.png
+再次查看文件目录，确定删除成功。
+[]!https://github.com/ZhaoTingxuan/zhaoxuhong/blob/master/lab5/5.png
